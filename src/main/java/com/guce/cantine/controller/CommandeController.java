@@ -1,6 +1,6 @@
 package com.guce.cantine.controller;
 
-import com.guce.cantine.dto.CommandeDTO;
+import com.guce.cantine.dto.CommandeRequest;
 import com.guce.cantine.entity.Commande;
 import com.guce.cantine.entity.Menu;
 import com.guce.cantine.entity.User;
@@ -27,16 +27,15 @@ public class CommandeController {
     private MenuRepository menuRepository;
 
     @PostMapping
-    public Commande choisirMenu(@RequestParam Long userId,
-                                @RequestParam Long menuId) {
+    public Commande create(@RequestBody CommandeRequest req) {
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User "+userId+" introuvable"));
+        User user = userRepository.findById(req.getUserId())
+                .orElseThrow();
 
-        Menu menu = menuRepository.findById(menuId)
-                .orElseThrow(() -> new RuntimeException("Menu "+menuId+" introuvable"));
+        Menu menu = menuRepository.findById(req.getMenuId())
+                .orElseThrow();
 
-        return commandeService.choisirMenu(user, menu);
+        return commandeService.create(user, menu);
     }
 
     @GetMapping("/user/{id}")

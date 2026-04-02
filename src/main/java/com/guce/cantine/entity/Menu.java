@@ -21,5 +21,5 @@ public class Menu {
     private LocalDate dateDebutSemaine;
 
     @ManyToOne
-    private User prestataire;
+    private User provider ; // prestataire
 }

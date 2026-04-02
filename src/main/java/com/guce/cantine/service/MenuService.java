@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MenuService {
@@ -24,7 +23,11 @@ public class MenuService {
         return menuRepository.findByDateDebutSemaine(dateDebutSemaine);
     }
 
-    public List<Menu> getMenusByPrestataire(User prestataire) {
-        return menuRepository.findByPrestataire(prestataire);
+    public List<Menu> getAllMenus() {
+        return menuRepository.findAll();
+    }
+
+    public List<Menu> getMenusByProvider(User provider) {
+        return menuRepository.findByProvider(provider);
     }
 }

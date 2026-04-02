@@ -18,7 +18,7 @@ public class CommandeService {
     @Autowired
     private CommandeRepository commandeRepository;
 
-    public Commande choisirMenu(User user, Menu menu) {
+    public Commande create(User user, Menu menu) {
 
         // 🔒 règle : avant vendredi 12h
         LocalDateTime now = LocalDateTime.now();

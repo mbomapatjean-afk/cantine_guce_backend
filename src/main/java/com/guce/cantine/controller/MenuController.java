@@ -21,6 +21,11 @@ public class MenuController {
         return menuService.createMenu(menu);
     }
 
+    @GetMapping
+    public List<Menu>  getAllMenus() {
+        return menuService.getAllMenus();
+    }
+
     @GetMapping("/semaine")
     public List<Menu> getBySemaine(@RequestParam String date) {
         return menuService.getMenusSemaine(LocalDate.parse(date));
